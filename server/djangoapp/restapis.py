@@ -30,10 +30,11 @@ def get_request(endpoint, **kwargs):
 
 
 def analyze_review_sentiments(text):
-    request_url = sentiment_analyzer_url + "analyze/" + text
+    request_url = sentiment_analyzer_url + "/analyze/" + text
     try:
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
+        print("Raw HTTP response:", response.status_code, response.text)
         return response.json()
     except requests.RequestException as err:
         print(f"Unexpected error: {err}")
